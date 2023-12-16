@@ -1,0 +1,50 @@
+{
+  "name": "polyfill-crypto-methods",
+  "version": "0.1.0",
+  "description": "Polyfill for Crypto instance methods of Web Crypto API",
+  "type": "module",
+  "author": "Atypiape",
+  "license": "MIT",
+  "homepage": "https://github.com/atypiape/polyfill-crypto-methods.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atypiape/polyfill-crypto-methods.git"
+  },
+  "keywords": [
+    "Web Crypto API",
+    "webcrypto",
+    "crypto",
+    "getRandomValues",
+    "randomBytes",
+    "randomUUID",
+    "polyfill",
+    "browser",
+    "node",
+    "wechat",
+    "wx",
+    "微信",
+    "小程序",
+    "crypto-js",
+    "jsencrypt",
+    "@noble/curves"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.umd.cjs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && tsc --build tsconfig.declare.json"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
+  }
+}
