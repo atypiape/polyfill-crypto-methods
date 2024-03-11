@@ -11,14 +11,20 @@ const globalThat = getGlobalThis();
  */
 (function () {
   if ("crypto" in globalThat) {
+    if (!("getRandomValues" in globalThat.crypto)) {
+      (globalThat.crypto as any).getRandomValues = getRandomValues;
+    }
     if (!("randomBytes" in globalThat.crypto)) {
       (globalThat.crypto as any).randomBytes = randomBytes;
+    }
+    if (!("randomUUID" in globalThat.crypto)) {
+      (globalThat.crypto as any).randomUUID = randomUUID;
     }
   } else {
     (globalThat as any).crypto = {
       getRandomValues,
-      randomUUID,
       randomBytes,
+      randomUUID,
     } as CryptoMethods;
   }
 })();
