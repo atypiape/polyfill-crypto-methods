@@ -1,6 +1,6 @@
 {
   "name": "polyfill-crypto-methods",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Polyfill for Crypto instance methods of Web Crypto API",
   "type": "module",
   "author": "Atypiape",
