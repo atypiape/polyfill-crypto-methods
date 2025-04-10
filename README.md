@@ -1,22 +1,26 @@
 # Polyfill-Crypto-Methods
 
-This is a polyfill for the [Crypto](https://developer.mozilla.org/docs/Web/API/Crypto) **instance methods** of the [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API) (just import this library at the top of your code entry):
+This is a polyfill for the [Crypto](https://developer.mozilla.org/docs/Web/API/Crypto) **instance methods** of the [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API):
 
 * [`crypto.getRandomValues()`](https://developer.mozilla.org/docs/Web/API/Crypto/getRandomValues)
 * [`crypto.randomUUID()`](https://developer.mozilla.org/docs/Web/API/Crypto/randomUUID)
 * [`crypto.randomBytes()`](https://nodejs.cn/api/crypto.html#crypto_crypto_randombytes_size_callback) (from `Node.js`)
 
-This library was originally made for `WeChat Miniprogram`, because they do not support [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API), which prevents the use of some third-party encryption libraries, such as  [crypto-js](https://www.npmjs.com/package/crypto-js), [jsencrypt](https://www.npmjs.com/package/jsencrypt), [@noble/curves](https://www.npmjs.com/package/@noble/curves) etc.
+You just need to import this library at the top of your code entry.
+
+This library was originally developed for `WeChat Miniprogram` because it does not support the [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API). This lack of support prevents the use of some third-party encryption libraries, such as  [crypto-js](https://www.npmjs.com/package/crypto-js), [jsencrypt](https://www.npmjs.com/package/jsencrypt), [@noble/curves](https://www.npmjs.com/package/@noble/curves), etc.
 
 ----
 
-向不支持 [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API) 的运行环境，全局注入 [Crypto](https://developer.mozilla.org/docs/Web/API/Crypto) **实例方法**（只需在代码入口的顶部导入这个库）：
+向不支持 [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API) 的运行环境，全局注入 [Crypto](https://developer.mozilla.org/docs/Web/API/Crypto) **实例方法**：
 
 * [`crypto.getRandomValues()`](https://developer.mozilla.org/docs/Web/API/Crypto/getRandomValues)
 * [`crypto.randomUUID()`](https://developer.mozilla.org/docs/Web/API/Crypto/randomUUID)
 * [`crypto.randomBytes()`](https://nodejs.cn/api/crypto.html#crypto_crypto_randombytes_size_callback) (来自 `Node.js`)
 
-这是库最初，是给微信小程序做的，由于不支持 [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API)，导致无法使用一些第三方加密库，比如 [crypto-js](https://www.npmjs.com/package/crypto-js)、[jsencrypt](https://www.npmjs.com/package/jsencrypt)、[@noble/curves](https://www.npmjs.com/package/@noble/curves) 等。
+你只需在代码入口的顶部导入这个库。
+
+该库最初用于微信小程序，由于小程序不支持 [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API)，导致无法使用一些第三方加密库，比如 [crypto-js](https://www.npmjs.com/package/crypto-js)、[jsencrypt](https://www.npmjs.com/package/jsencrypt)、[@noble/curves](https://www.npmjs.com/package/@noble/curves) 等。
 
 
 
@@ -39,7 +43,7 @@ yarn add polyfill-crypto-methods
 ```javascript
 import 'polyfill-crypto-methods';
 
-// Ouptut: true
+// Output: true
 console.log(globalThis.crypto === crypto);
 
 const int8 = crypto.getRandomValues(new Int8Array(4));
@@ -51,7 +55,7 @@ const uint32 = crypto.getRandomValues(new Uint32Array(4));
 
 // Output: [-69, 52, -69, 8]
 console.log(int8);
-// Ouput: [-12857, 11870, 1874, -30545]
+// Output: [-12857, 11870, 1874, -30545]
 console.log(int16);
 // Output: [740598374, 1682174651, -440338757, -391071704]
 console.log(int32);
@@ -68,30 +72,30 @@ console.log(uuid);
 
 // Sync
 const bytes = crypto.randomBytes(4);
-// Ouput: [123, 56, 189, 201]
-consologe.log(bytes);
+// Output: [123, 56, 189, 201]
+console.log(bytes);
 
 // Async
 const ret = crypto.randomBytes(4, (err, arr) => {
-	// Ouput: null, [92, 112, 228, 144]
+	// Output: null, [92, 112, 228, 144]
   console.log(err, arr);
 });
 ```
 
 ```javascript
-import { crypto as myCrypto } 'polyfill-crypto-methods';
+import { crypto as myCrypto } from 'polyfill-crypto-methods';
 
-// Ouptut: true
+// Output: true
 console.log(globalThis.crypto === myCrypto);
 
 // Sync
 const bytes = myCrypto.randomBytes(4);
-// Ouput: [123, 56, 189, 201]
-consologe.log(bytes);
+// Output: [123, 56, 189, 201]
+console.log(bytes);
 
 // Async
 const ret = myCrypto.randomBytes(4, (err, arr) => {
-	// Ouput: null, [92, 112, 228, 144]
+	// Output: null, [92, 112, 228, 144]
   console.log(err, arr);
 });
 ```
