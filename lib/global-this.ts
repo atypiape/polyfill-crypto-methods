@@ -1,7 +1,7 @@
 type GlobalType<T extends any> = T extends Window
- ? Window
+  ? Window
   : T extends typeof globalThis
- ? typeof globalThis
+  ? typeof globalThis
   : never;
 
 declare const window: Window & typeof globalThis;
@@ -15,26 +15,26 @@ declare const global: typeof globalThis;
 let theGlobalThis: GlobalType<typeof globalThis> | undefined;
 
 // ECMAScript2020(ES11) 新增的
-if (typeof globalThis !== "undefined") {
+if (typeof globalThis !== 'undefined') {
   theGlobalThis = globalThis;
 }
 
 // web 和 React Native 有 self
-if (typeof self !== "undefined") {
+if (typeof self !== 'undefined') {
   theGlobalThis = self;
 }
 // web 有 window
-else if (typeof window !== "undefined") {
+else if (typeof window !== 'undefined') {
   theGlobalThis = window;
 }
 // node 有 global
-else if (typeof global !== "undefined") {
+else if (typeof global !== 'undefined') {
   theGlobalThis = global;
 }
 // web 中的全局 this
 else {
   try {
-    theGlobalThis = Function("return this")();
+    theGlobalThis = Function('return this')();
   } catch (_) {
     if (this !== undefined) {
       theGlobalThis = this;

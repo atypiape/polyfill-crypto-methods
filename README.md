@@ -2,27 +2,25 @@
 
 This is a polyfill for the [Crypto](https://developer.mozilla.org/docs/Web/API/Crypto) **instance methods** of the [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API):
 
-* [`crypto.getRandomValues()`](https://developer.mozilla.org/docs/Web/API/Crypto/getRandomValues)
-* [`crypto.randomUUID()`](https://developer.mozilla.org/docs/Web/API/Crypto/randomUUID)
-* [`crypto.randomBytes()`](https://nodejs.cn/api/crypto.html#crypto_crypto_randombytes_size_callback) (from `Node.js`)
+- [`crypto.getRandomValues()`](https://developer.mozilla.org/docs/Web/API/Crypto/getRandomValues)
+- [`crypto.randomUUID()`](https://developer.mozilla.org/docs/Web/API/Crypto/randomUUID)
+- [`crypto.randomBytes()`](https://nodejs.cn/api/crypto.html#crypto_crypto_randombytes_size_callback) (from `Node.js`)
 
 You just need to import this library at the top of your code entry.
 
-This library was originally developed for `WeChat Miniprogram` because it does not support the [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API). This lack of support prevents the use of some third-party encryption libraries, such as  [crypto-js](https://www.npmjs.com/package/crypto-js), [jsencrypt](https://www.npmjs.com/package/jsencrypt), [@noble/curves](https://www.npmjs.com/package/@noble/curves), etc.
+This library was originally developed for `WeChat Miniprogram` because it does not support the [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API). This lack of support prevents the use of some third-party encryption libraries, such as [crypto-js](https://www.npmjs.com/package/crypto-js), [jsencrypt](https://www.npmjs.com/package/jsencrypt), [@noble/curves](https://www.npmjs.com/package/@noble/curves), etc.
 
-----
+---
 
 向不支持 [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API) 的运行环境，全局注入 [Crypto](https://developer.mozilla.org/docs/Web/API/Crypto) **实例方法**：
 
-* [`crypto.getRandomValues()`](https://developer.mozilla.org/docs/Web/API/Crypto/getRandomValues)
-* [`crypto.randomUUID()`](https://developer.mozilla.org/docs/Web/API/Crypto/randomUUID)
-* [`crypto.randomBytes()`](https://nodejs.cn/api/crypto.html#crypto_crypto_randombytes_size_callback) (来自 `Node.js`)
+- [`crypto.getRandomValues()`](https://developer.mozilla.org/docs/Web/API/Crypto/getRandomValues)
+- [`crypto.randomUUID()`](https://developer.mozilla.org/docs/Web/API/Crypto/randomUUID)
+- [`crypto.randomBytes()`](https://nodejs.cn/api/crypto.html#crypto_crypto_randombytes_size_callback) (来自 `Node.js`)
 
 你只需在代码入口的顶部导入这个库。
 
 该库最初用于微信小程序，由于小程序不支持 [Web Crypto API](https://developer.mozilla.org/docs/Web/API/Web_Crypto_API)，导致无法使用一些第三方加密库，比如 [crypto-js](https://www.npmjs.com/package/crypto-js)、[jsencrypt](https://www.npmjs.com/package/jsencrypt)、[@noble/curves](https://www.npmjs.com/package/@noble/curves) 等。
-
-
 
 ## Usage
 
@@ -77,7 +75,7 @@ console.log(bytes);
 
 // Async
 const ret = crypto.randomBytes(4, (err, arr) => {
-	// Output: null, [92, 112, 228, 144]
+  // Output: null, [92, 112, 228, 144]
   console.log(err, arr);
 });
 ```
@@ -95,7 +93,7 @@ console.log(bytes);
 
 // Async
 const ret = myCrypto.randomBytes(4, (err, arr) => {
-	// Output: null, [92, 112, 228, 144]
+  // Output: null, [92, 112, 228, 144]
   console.log(err, arr);
 });
 ```

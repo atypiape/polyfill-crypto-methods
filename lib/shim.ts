@@ -32,7 +32,7 @@ export interface CryptoMethods {
 export function getRandomValues<T extends TypedArray>(array: T): T {
   if (!ArrayBuffer.isView(array)) {
     throw new TypeError(
-      "Failed to execute 'getRandomValues' on 'Crypto': parameter 1 is not of type 'ArrayBufferView'."
+      "Failed to execute 'getRandomValues' on 'Crypto': parameter 1 is not of type 'ArrayBufferView'.",
     );
   }
 
@@ -40,7 +40,7 @@ export function getRandomValues<T extends TypedArray>(array: T): T {
     const message =
       "Failed to execute 'getRandomValues' on 'Crypto': The ArrayBufferView's byte length (" +
       array.byteLength +
-      ") exceeds the number of bytes of entropy available via this API (65536).";
+      ') exceeds the number of bytes of entropy available via this API (65536).';
 
     // 小程序中没有 DOMException
     if ('DOMException' in globalThis) {
@@ -63,34 +63,33 @@ export function getRandomValues<T extends TypedArray>(array: T): T {
  * Node.js 中的 crypto.randomBytes() 方法实现
  * @see https://nodejs.cn/api/crypto.html#crypto_crypto_randombytes_size_callback
  */
-export function randomBytes<T extends Uint8Array | Promise<Uint8Array> = Uint8Array>(
-  size: number,
-  callback?: RandomBytesCallback,
-): T {
-  if (typeof size !== "number") {
+export function randomBytes<
+  T extends Uint8Array | Promise<Uint8Array> = Uint8Array,
+>(size: number, callback?: RandomBytesCallback): T {
+  if (typeof size !== 'number') {
     throw new TypeError(
       '[ERR_INVALID_ARG_TYPE]: The "size" argument must be of type number. ' +
-        `Received type ${typeof size} (${size})`
+        `Received type ${typeof size} (${size})`,
     );
   }
 
   if (size < 0 || size > 2147483647) {
     throw new RangeError(
       '[ERR_OUT_OF_RANGE]: The value of "size" is out of range. ' +
-        `It must be >= 0 && <= 2147483647. Received ${size}`
+        `It must be >= 0 && <= 2147483647. Received ${size}`,
     );
   }
 
-  if (callback && typeof callback !== "function") {
+  if (callback && typeof callback !== 'function') {
     throw new TypeError(
       '[ERR_INVALID_ARG_TYPE]: The "callback" argument must be of type function. ' +
-        `Received type ${typeof callback} (${callback})`
+        `Received type ${typeof callback} (${callback})`,
     );
   }
 
   if (!callback) {
     const array = new Uint8Array(size);
-    return (getRandomValues(array) as T);
+    return getRandomValues(array) as T;
   }
 
   return new Promise<Uint8Array>((resolve) => {
@@ -112,11 +111,11 @@ export function randomBytes<T extends Uint8Array | Promise<Uint8Array> = Uint8Ar
 export function randomUUID(): string {
   const array = randomBytes(16);
   const random = array.reduce((acc, byte, index) => {
-    let value = acc + byte.toString(16).padStart(2, "0");
+    let value = acc + byte.toString(16).padStart(2, '0');
     if (index === 3 || index === 5 || index === 7 || index === 9) {
-      value += "-";
+      value += '-';
     }
     return value;
-  }, "");
+  }, '');
   return random;
 }
